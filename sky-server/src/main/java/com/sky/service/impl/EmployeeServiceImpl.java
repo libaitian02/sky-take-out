@@ -64,12 +64,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void save(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
-        employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes());
+        employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
         employee.setStatus(StatusConstant.DISABLE);
         employee.setCreateTime(LocalDateTime.now());
         employee.setUpdateTime(LocalDateTime.now());
 
-        //TODO
+        //TODO后续改为登录用户的id
         employee.setCreateUser(10L);
         employee.setUpdateUser(10L);
 
