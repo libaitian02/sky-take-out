@@ -8,6 +8,6 @@ sky:
     password: li594438
   alioss:
     bucket-name: web-tlias-lizewei
-    endpoint: https://oss-cn-hangzhou.aliyuncs.com
+    endpoint: oss-cn-hangzhou.aliyuncs.com
     access-key-id: LTAI5tCKvqEaYzrWVjGzXeh1
     access-key-secret: vBdoY6PQ8gDtVDALy9GHiUag6wcwon
