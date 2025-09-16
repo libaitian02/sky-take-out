@@ -1,13 +1,19 @@
 package com.sky.service;
 
 import com.sky.dto.DishDTO;
-import com.sky.result.Result;
-import org.springframework.stereotype.Service;
+import com.sky.dto.DishPageQueryDTO;
+import com.sky.entity.Dish;
+import com.sky.result.PageResult;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 
 public interface DishService {
 
     public void saveWithFlavor(@RequestBody DishDTO dishDTO);
+
+    PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO);
+
+    void delete(List<Long> ids);
 }
