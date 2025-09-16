@@ -61,9 +61,7 @@ public class DishServicelmpl implements DishService {
     }
 
 
-    public Dish getById(Long id) {
-        return null;
-    }
+
 
     @Transactional
     public void delete(List<Long> ids) {
@@ -86,12 +84,35 @@ public class DishServicelmpl implements DishService {
             dishFlavorMapper.deleteById(id);
         }
 
+    }
 
 
+    public DishVO getById(Long id) {
+        DishVO dishVO = new DishVO();
+        Dish dish = dishMapper.getById(id);
+        List<DishFlavor> dishFlavors = dishFlavorMapper.getByDishId(id);
+        BeanUtils.copyProperties(dish, dishVO);
+        dishVO.setFlavors(dishFlavors);
+        return dishVO;
+    }
 
 
-
-
+    public void update(DishDTO dishDTO) {
+        //修改菜品表基本信息
+        Dish dish = new Dish();
+        BeanUtils.copyProperties(dishDTO, dish);
+        dishMapper.update(dish);
+        //删除原有的口味信息
+        dishFlavorMapper.deleteById(dishDTO.getId());
+        //新增口味信息
+        List<DishFlavor> flavors = dishDTO.getFlavors();
+        if(flavors != null && !flavors.isEmpty()) {
+            flavors.forEach(flavor -> {
+                //有可能这个口味数据新增出来
+                flavor.setDishId(dishDTO.getId());
+            });
+            dishFlavorMapper.insertBatch(flavors);
+        }
     }
 
 }
