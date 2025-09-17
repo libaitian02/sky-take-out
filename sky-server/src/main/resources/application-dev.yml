@@ -9,3 +9,9 @@ sky:
   alioss:
     bucket-name: web-tlias-lizewei
     endpoint: oss-cn-hangzhou.aliyuncs.com
+
+  redis:
+    host: localhost
+    port: 6379
+    auth: 'li594438'
+    database: 0
