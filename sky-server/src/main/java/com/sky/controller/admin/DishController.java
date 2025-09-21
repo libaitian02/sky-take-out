@@ -53,7 +53,7 @@ public class DishController {
     public Result save(@RequestBody DishDTO dishDTO) {
         log.info("新增菜品:{}", dishDTO);
         dishService.saveWithFlaver(dishDTO);
-
+//        redisTemplate.delete(dishDTO.getId());
         cleanCache("dish_"+dishDTO.getCategoryId());
         return Result.success();
     }

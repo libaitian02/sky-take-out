@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sky.mapper.UserMapper">
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
-        insert into user(openid, name, phone, sex, id_number, avatar, create_time)
+        insert into sky_take_out.user(openid, name, phone, sex, id_number, avatar, create_time)
         values(#{openid},#{name},#{phone},#{sex},#{idNumber},#{avatar},#{createTime})
     </insert>
     <select id="countByMap" resultType="java.lang.Integer" parameterType="java.util.Map">
-        select count(*) from user where create_time <![CDATA[
+        select count(*) from sky_take_out.user where create_time <![CDATA[
         <
         ]]> #{map.end} and create_time <![CDATA[
         >
