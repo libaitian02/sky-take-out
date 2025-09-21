@@ -17,14 +17,14 @@
     </select>
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
-        insert into dish(name, category_id, price, image, description, create_time, update_time, create_user,
+        insert into sky_take_out.dish(name, category_id, price, image, description, create_time, update_time, create_user,
                          update_user, status)
         values (#{name}, #{categoryId}, #{price}, #{image}, #{description}, #{createTime}, #{updateTime}, #{createUser},
                 #{updateUser}, #{status})
     </insert>
 
     <insert id="insertBatchFlavors">
-        insert into dish_flavor(dish_id, name, value)
+        insert into sky_take_out.dish_flavor(dish_id, name, value)
         values
         <foreach collection="flavors" item="flavor" separator=",">
             (#{flavor.dishId},#{flavor.name},#{flavor.value})
@@ -53,7 +53,7 @@
     </select>
 
     <update id="updateDish">
-        update dish
+        update sky_take_out.dish
         <set>
             <if test="name!=null and name!=''">
                 name=#{name},
@@ -77,16 +77,32 @@
         where id=#{id}
     </update>
 
+<!--    <delete id="deleteBatchFlavors">-->
+<!--        delete from sky_take_out.dish_flavor where dish_id in-->
+<!--        <foreach collection="flavors" item="flavor" close=")" open="(" separator=",">-->
+<!--            #{flavor.dishId}-->
+<!--        </foreach>-->
+<!--    </delete>-->
+
     <delete id="deleteBatchFlavors">
-        delete from dish_flavor where dish_id in
-        <foreach collection="flavors" item="flavor" close=")" open="(" separator=",">
-            #{flavor.dishId}
-        </foreach>
+        delete from sky_take_out.dish_flavor where dish_id in
+        <!-- 1. flavors非空时：正常生成(in (dishId1, dishId2)) -->
+        <choose>
+            <when test="flavors != null and flavors.size() > 0">
+                <foreach collection="flavors" item="flavor" open="(" close=")" separator=",">
+                    #{flavor.dishId}
+                </foreach>
+            </when>
+            <!-- 2. flavors为空时：生成(in (-1))，确保SQL完整（假设dish_id是正数，-1不会匹配任何数据） -->
+            <otherwise>
+                (-1)
+            </otherwise>
+        </choose>
     </delete>
 
     <select id="getFlavorById" resultType="com.sky.entity.DishFlavor">
         select *
-        from dish_flavor
+        from sky_take_out.dish_flavor
         where dish_id = #{id}
     </select>
     <select id="countByMap" resultType="java.lang.Integer">

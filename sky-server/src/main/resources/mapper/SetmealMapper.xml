@@ -101,7 +101,7 @@
     </delete>
 
     <insert id="insertSetmeal">
-        insert into setmeal(category_id, name, price, status, description, image, create_time, update_time, create_user,
+        insert into sky_take_out.setmeal(category_id, name, price, status, description, image, create_time, update_time, create_user,
                             update_user)
         values (#{categoryId}, #{name}, #{price}, #{status},
                 #{description}, #{image}

@@ -118,8 +118,13 @@ public class DishServiceImpl implements DishService {
         //更新菜品
         dishMapper.updateDish(dish);
         //更新菜品对应的口味
+
         dishMapper.deleteBatchFlavors(flavors);
-        dishMapper.insertBatchFlavors(flavors);
+
+        if(flavors != null && flavors.size() > 0){
+            dishMapper.insertBatchFlavors(flavors);
+        }
+
 
     }
 

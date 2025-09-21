@@ -9,8 +9,7 @@ sky:
   alioss:
     bucket-name: web-tlias-lizewei
     endpoint: oss-cn-hangzhou.aliyuncs.com
-    access-key-id: LTAI5tCKvqEaYzrWVjGzXeh1
-    access-key-secret: vBdoY6PQ8gDtVDALy9GHiUag6wcwon
+
 
   redis:
     host: localhost
