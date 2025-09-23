@@ -1,3 +1,5 @@
+
+
 sky:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,12 +13,16 @@ sky:
     endpoint: oss-cn-hangzhou.aliyuncs.com
 
 
-  redis:
-    host: localhost
-    port: 6379
-    auth: 'li594438'
-    database: 0
-
   wechat:
     appid: wx8696c7b690f9ea2e
     secret: 2ecfde626223f769d00e7b508a26f311
+    mchid: 1561414331
+    mchSerialNo: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606
+    privateKeyFilePath: C:\software\apiclient_key.pem
+    apiV3Key: CZBK51236435wxpay435434323FFDuv3
+    weChatPayCertFilePath: C:\software\wechatpay_166D96F876F45C7D07CE98952A96EC980368ACFC.pem
+    notifyUrl: https://b4b573e.r3.cpolar.top/notify/paySuccess
+    refundNotifyUrl: https://b4b573e.r3.cpolar.top/notify/refundSuccess
+
+
+
