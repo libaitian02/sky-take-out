@@ -18,7 +18,7 @@ public interface ShoppingCartMapper {
 
     @Insert("insert sky_take_out.shopping_cart(name, image, user_id, dish_id, setmeal_id, dish_flavor, number, amount, create_time) " +
             "VALUES " +
-            "(#{name}, #{image}, #{userId}, #{dishId}, #{setmealId}, #{dish Flavor}, #{number}, #{amount}, #{createTime})")
+            "(#{name}, #{image}, #{userId}, #{dishId}, #{setmealId}, #{dishFlavor}, #{number}, #{amount}, #{createTime})")
     void insert(ShoppingCart shoppingCart);
 
     @Delete("delete from sky_take_out.shopping_cart where user_id = #{userId}")
