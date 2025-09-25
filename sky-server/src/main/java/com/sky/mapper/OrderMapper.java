@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.core.annotation.Order;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Mapper
@@ -37,4 +38,6 @@ public interface OrderMapper {
     @Select("select * from orders where id = #{id}")
     Orders getById(Long id);
 
+    @Select("select sum(amount) from orders where order_time between #{beginTime} and #{endTime} and status == #{status}")
+    BigDecimal count(LocalDateTime beginTime, LocalDateTime endTime, Integer status);
 }
