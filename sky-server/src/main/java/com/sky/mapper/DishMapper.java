@@ -18,6 +18,12 @@ public interface DishMapper {
 
 
     /**
+     * 根据条件统计菜品数量
+     * @param map
+     * @return
+     */
+    Integer countByMap(Map map);
+    /**
      * 菜品分页查询
      *
      * @param dishPageQueryDTO
@@ -90,10 +96,5 @@ public interface DishMapper {
     @Select("select * from dish where id=#{id}")
     Dish getById(Long id);
 
-    /**
-     * 根据条件统计菜品数量
-     * @param map
-     * @return
-     */
-    Integer countByMap(Map map);
+
 }

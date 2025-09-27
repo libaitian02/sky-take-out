@@ -12,20 +12,7 @@ sky:
   alioss:
     bucket-name: web-tlias-lizewei
     endpoint: oss-cn-hangzhou.aliyuncs.com
-    access-key-id: LTAI5tCKvqEaYzrWVjGzXeh1
-    access-key-secret: vBdoY6PQ8gDtVDALy9GHiUag6wcwon
 
-  redis:
-    host: localhost
-    port: 6379
-    auth: 'li594438'
-    database: 0
-
-  shop:
-    address: 安徽省合肥市蜀山区九龙路111号
-
-  baidu:
-    ak: Jv3N0FyIZdA7hyNndr6Yh6tvWR3JSTU5
 
 
 
