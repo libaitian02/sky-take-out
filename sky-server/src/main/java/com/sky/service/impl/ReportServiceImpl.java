@@ -22,9 +22,12 @@ public class ReportServiceImpl implements ReportService {
     private OrderMapper orderMapper;
 
     public TurnoverReportVO getTurnoverStatistics(LocalDate begin, LocalDate end) {
+
         List<LocalDate> localDates = new ArrayList<>();
         localDates.add(begin);
-        while(begin!=end){
+        //如果begin和end是日期对象（如 Java 中的LocalDate），使用!=比较的是对象引用，而不是实际的日期值。
+        // 即使两个对象代表相同的日期，只要它们是不同的对象实例，!=就会返回true。
+        while(!begin.equals(end)){
             begin = begin.plusDays(1);
             localDates.add(begin);
         }
@@ -34,8 +37,8 @@ public class ReportServiceImpl implements ReportService {
         for (LocalDate localDate : localDates) {
             LocalDateTime beginTime = LocalDateTime.of(localDate, LocalTime.MIN);
             LocalDateTime endTime = LocalDateTime.of(localDate, LocalTime.MAX);
-            BigDecimal amount = orderMapper.count(beginTime,endTime, Orders.COMPLETED);
-            if(amount!=null){
+            BigDecimal amount = orderMapper.count(beginTime, endTime, Orders.COMPLETED);
+            if(amount==null){
                 amount = BigDecimal.valueOf(0.0);
             }
             turnoverList.add(amount);

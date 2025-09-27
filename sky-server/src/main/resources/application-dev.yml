@@ -9,6 +9,11 @@ sky:
     username: root
     password: li594438
 
+  alioss:
+    bucket-name: web-tlias-lizewei
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+
+
 
 
   wechat:
